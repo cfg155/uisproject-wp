@@ -1,3 +1,6 @@
+"use client";
+import useNavigationLayout from "@/hooks/useNavigationLayout";
+import clsx from "clsx";
 import Link from "next/link";
 
 export default function Links({
@@ -9,9 +12,13 @@ export default function Links({
     label: string;
   }[];
 }) {
+  const { data } = useNavigationLayout();
+
   return links.map((link, index) => (
     <Link key={index} href={link.href}>
-      {link.label}
+      <span className={clsx(data.currentLink === link.id ? "font-bold" : "")}>
+        {link.label}
+      </span>
     </Link>
   ));
 }
