@@ -19,7 +19,7 @@ export default function NavSection({
       as="section"
       id={id}
       className={className}
-      threshold={0.9}
+      threshold={0.7}
       onChange={(inView, entry) => {
         if (inView) {
           setActiveLink(entry.target.id);
@@ -27,6 +27,7 @@ export default function NavSection({
       }}
       {...rest}
     >
+      <div className="h-[100px]" />
       {children}
     </InView>
   );
