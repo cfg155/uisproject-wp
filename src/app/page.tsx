@@ -3,11 +3,13 @@ import { NAV_LINKS_ID } from "./constants";
 import HireMeButton from "@/components/hire-me-button";
 import AboutMeItem from "@/components/about-me-item";
 import ServicesItem from "@/components/services-item";
-import Link from "next/link";
 import SectionTitle from "@/components/section-title";
 import PortfolioItem from "@/components/portfolio-item";
 import ContactUsItem from "@/components/contact-us-item";
 import Input from "@/components/input";
+import Textarea from "@/components/textarea";
+import ExploreLink from "@/components/explore-link";
+import Image from "next/image";
 
 export default function Home() {
   return (
@@ -66,7 +68,6 @@ export default function Home() {
               doloremque eaque maiores a aliquam asperiores tempore
               necessitatibus optio animi voluptatibus corporis debitis.
             </p>
-            <Link href="/">Explore All Services</Link>
             <div className="flex flex-wrap gap-5 mt-10">
               <AboutMeItem title="5 Year+" subtitle="Experience" />
               <AboutMeItem title="700+" subtitle="Projects" />
@@ -75,8 +76,10 @@ export default function Home() {
           </div>
         </div>
       </NavSection>
+
       <NavSection id={NAV_LINKS_ID.SERVICES}>
         <SectionTitle category="SERVICES" title="Check My Services" />
+        <ExploreLink href="#">Explore All Services</ExploreLink>
         <div className="flex flex-col md:flex-row justify-center gap-10">
           <ServicesItem
             title="Landing Page Design"
@@ -95,11 +98,10 @@ export default function Home() {
           <HireMeButton />
         </div>
       </NavSection>
+
       <NavSection id={NAV_LINKS_ID.PORTFOLIO}>
         <SectionTitle category="PORTFOLIO" title="People Lie Work Don't" />
-        <div className="text-right mb-5">
-          <Link href="/">Explore All Services</Link>
-        </div>
+        <ExploreLink href="#">Explore All Portfolios</ExploreLink>
         <div className="grid grid-cols-1 lg:grid-cols-2 w-full place-items-center gap-5">
           <PortfolioItem />
           <PortfolioItem />
@@ -110,15 +112,36 @@ export default function Home() {
           <HireMeButton />
         </div>
       </NavSection>
+
       <NavSection id={NAV_LINKS_ID.TESTIMONIALS}>
         <SectionTitle category="TESTIMONIALS" title="What People Says" />
+        <div className="relative mb-20">
+          <div className="w-96 h-32 bg-grey absolute left-0 top-5" />
+          <Image
+            className="absolute top-5 right-[10em] z-0"
+            src="./Vector.svg"
+            alt="shape"
+            width={150}
+            height={150}
+          />
+          <div className="min-h-64 flex justify-center items-center relative">
+            <div className="w-40 h-40 rounded-full bg-[grey] absolute left-1/2 top-0 -translate-x-1/2 z-20" />
+            <div className="bg-white relative z-10 shadow-xl rounded-md px-5 py-8 pt-24 max-w-[60%] text-justify mt-20">
+              Lorem, ipsum dolor sit amet consectetur adipisicing elit. Ad nulla
+              totam, illo commodi veritatis illum earum natus cumque impedit
+              eveniet eos accusantium alias autem! Corrupti accusamus ad facilis
+              provident tempora.
+            </div>
+          </div>
+        </div>
         <SectionTitle category="OUR CLIENTS" title="What Makes Me Proud" />
       </NavSection>
+
       <NavSection id={NAV_LINKS_ID.CONTACT_US}>
-        <div className="flex justify-between bg-[grey] p-10">
-          <div className="max-w-72 mt-10">
+        <div className="flex justify-around flex-wrap gap-20 bg-grey p-10">
+          <div className="w-full md:max-w-72 mt-10">
             <h2 className="text-4xl font-bold">Contact Us</h2>
-            <p className="pt-5 pb-20 max-w-96">
+            <p className="pt-5 pb-10 max-w-96">
               We are committed to processing the information in order to contact
               you and talk about your project
             </p>
@@ -128,12 +151,15 @@ export default function Home() {
               <ContactUsItem label="+44 123 654 7890" />
             </div>
           </div>
-          <div>
-            <Input placeholder="Name" />
-            <Input placeholder="Email" />
-            <Input placeholder="Website" />
-            <Input placeholder="" />
-          </div>
+          <form className="w-full md:w-72">
+            <Input placeholder="Name" className="mb-5" />
+            <Input placeholder="Email" className="mb-5" />
+            <Input placeholder="Website" className="mb-5" />
+            <Textarea placeholder="Message" className="mb-5" />
+            <button className="bg-orange py-2 px-5 text-white rounded-md">
+              Submit
+            </button>
+          </form>
         </div>
       </NavSection>
     </main>

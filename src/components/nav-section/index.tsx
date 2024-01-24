@@ -19,9 +19,12 @@ export default function NavSection({
       as="section"
       id={id}
       className={className}
-      threshold={0.7}
+      threshold={0.5}
       onChange={(inView, entry) => {
+        console.log(inView);
+        console.log(entry);
         if (inView) {
+          console.log(entry.target.id);
           setActiveLink(entry.target.id);
         }
       }}
